@@ -6,7 +6,6 @@
 //
 
 import Foundation
-//import InfoEnergy
 
 @propertyWrapper struct UserDefault<T, Key: RawRepresentable<String>> {
     let key: Key
