@@ -32,10 +32,28 @@ extension Array {
         )
         .map({ ($0.key, $0.value)})
     }
+    
+    public func compact<T>() -> [T] where Element == T? {
+        self.compactMap { $0 }
+    }
+}
+
+extension Array where Element: Equatable {
+    public func removingDuplicates() -> [Element] {
+        self.reduce(into: [Element]()) { result, element in
+            if !result.contains(element) {
+                result.append(element)
+            }
+        }
+    }
 }
 
 extension Array where Element: Collection {
     public func flatten() -> [Element.Element] {
         return self.flatMap { $0 }
     }
+}
+
+extension Collection {
+    public var isNotEmpty: Bool { !isEmpty }
 }
