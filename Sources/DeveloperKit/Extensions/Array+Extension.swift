@@ -25,6 +25,14 @@ extension Array {
         return range.compactMap({ at($0) })
     }
     
+    public mutating func setAt(_ index: Int, _ value: Element) {
+        guard index >= 0,
+              index < count
+        else { return }
+        
+        self[index] = value
+    }
+    
     public func grouped<Key: Hashable>(by keyForValue: (Element) -> Key) -> [(Key, Self)] {
         Dictionary(
             grouping: self,
