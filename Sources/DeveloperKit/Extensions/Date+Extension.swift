@@ -31,7 +31,7 @@ extension Date {
         }
     }
     
-    public func isBetween(_ startDate: Date, _ endDate: Date) -> Bool {
-        return startDate < self && self < endDate
+    public func isBetween(_ startDate: Date?, _ endDate: Date?) -> Bool {
+        return (startDate ?? .distantPast) < self && self < (endDate ?? .distantFuture)
     }
 }

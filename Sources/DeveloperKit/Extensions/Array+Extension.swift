@@ -46,6 +46,12 @@ extension Array {
     }
 }
 
+extension Array {
+    public func toDictionary<Key: Hashable, Value>() -> [Key: Value] where Element == (Key, Value) {
+        Dictionary(uniqueKeysWithValues: self)
+    }
+}
+
 extension Array where Element: Equatable {
     public func removingDuplicates() -> [Element] {
         self.reduce(into: [Element]()) { result, element in
