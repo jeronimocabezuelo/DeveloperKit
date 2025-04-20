@@ -18,4 +18,8 @@ extension String {
         
         return dateFormatter.date(from: self)
     }
+    
+    public var uuid: UUID? {
+        UUID(uuidString: self)
+    }
 }

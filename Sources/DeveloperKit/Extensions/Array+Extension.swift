@@ -14,8 +14,8 @@ extension Array {
     }
     
     public func at(_ index: Int) -> Element? {
-        guard index >= 0,
-              index < count
+        guard index >= startIndex,
+              index < endIndex
         else { return nil }
         
         return self[index]
@@ -25,6 +25,9 @@ extension Array {
         return range.compactMap({ at($0) })
     }
     
+    public mutating func set(at index: Int, with value: Element) {
+        self.setAt(index, value)
+    }
     public mutating func setAt(_ index: Int, _ value: Element) {
         guard index >= 0,
               index < count
@@ -70,4 +73,16 @@ extension Array where Element: Collection {
 
 extension Collection {
     public var isNotEmpty: Bool { !isEmpty }
+}
+
+extension Collection where Element: Identifiable {
+    public func find(id: Element.ID?) -> Element? {
+        guard let id else { return nil }
+        return first { $0.id == id }
+    }
+    
+    public func findIndex(id: Element.ID?) -> Index? {
+        guard let id else { return nil }
+        return firstIndex { $0.id == id }
+    }
 }
