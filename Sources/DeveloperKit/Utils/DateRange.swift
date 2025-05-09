@@ -17,7 +17,7 @@ public struct DateRange: Codable {
 }
 
 public extension DateRange {
-    public init?(start: Date?, end: Date?) {
+    init?(start: Date?, end: Date?) {
         guard let start, let end else { return nil }
         self.init(start: start, end: end)
     }
