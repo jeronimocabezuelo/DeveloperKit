@@ -1,0 +1,60 @@
+//
+//  OptionalDatePicker.swift
+//  DeveloperKit
+//
+//  Created by Jerónimo Cabezuelo Ruiz on 10/5/25.
+//
+
+import SwiftUI
+
+public struct OptionalDatePicker: View {
+    let label: String
+    @Binding var date: Date?
+    let displayedComponents: DatePickerComponents
+    
+    public init(label: String, date: Binding<Date?>, displayedComponents: DatePickerComponents = [.hourAndMinute, .date]) {
+        self.label = label
+        self._date = date
+        self.displayedComponents = displayedComponents
+    }
+    
+    public var body: some View {
+        HStack {
+            Toggle(isOn: Binding(
+                get: { date != nil },
+                set: { isOn in
+                    if isOn {
+                        date = date ?? Date()
+                    } else {
+                        date = nil
+                    }
+                }
+            )) {
+                Text(label)
+            }
+            
+            if let unwrappedDate = date {
+                DatePicker(
+                    "",
+                    selection: Binding(
+                        get: { unwrappedDate },
+                        set: { date = $0 }
+                    ),
+                    displayedComponents: displayedComponents
+                )
+                .labelsHidden()
+            }
+            
+            Spacer(minLength: .zero)
+        }
+    }
+}
+
+#Preview {
+    @Previewable @State var date: Date?
+    
+    OptionalDatePicker(
+        label: "Label",
+        date: $date
+    )
+}

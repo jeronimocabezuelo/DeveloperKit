@@ -58,6 +58,10 @@ extension Date {
         return formatter.string(from: self)
     }
     
+    public func stringFormatted(dateFormat: String.CustomDateFormat = .presentationDateFormat) -> String {
+        return self.stringFormatted(dateFormat: dateFormat.rawValue)
+    }
+    
     public func stringTemplated(_ template: DateFormatterTemplate) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale.current
