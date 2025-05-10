@@ -58,7 +58,7 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    public func stringFormatted(dateFormat: String.CustomDateFormat = .presentationDateFormat) -> String {
+    public func stringFormatted(dateFormat: String.CustomDateFormat) -> String {
         return self.stringFormatted(dateFormat: dateFormat.rawValue)
     }
     
