@@ -93,7 +93,7 @@ public struct TagsLayoutOld: Layout {
 }
 
 /// Algo parcido, pero más complejo: https://www.youtube.com/watch?v=FzL11vRhzs8&ab_channel=Kavsoft
-public struct TagLayout: Layout {
+public struct TagsLayout: Layout {
     let alignment: Alignment
     let verticalSpacing: CGFloat
     let horizontalSpacing: CGFloat
@@ -204,7 +204,7 @@ private struct TagsLayoutView: View {
     var body: some View {
         ScrollView {
             VStack {
-                TagLayout(verticalSpacing: 10, horizontalSpacing: 10) {
+                TagsLayout(verticalSpacing: 10, horizontalSpacing: 10) {
                     ForEach(data, id: \.self) { item in
                         Text(item)
                             .padding(.horizontal, 8)
