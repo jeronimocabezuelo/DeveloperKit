@@ -13,11 +13,11 @@ public struct CenterHStack<Leading: View, Center: View, Trailing: View>: View {
     var trailing: () -> Trailing
     
     public init(
-        leading: @escaping () -> Leading = {
+        @ViewBuilder leading: @escaping () -> Leading = {
             Text("").hidden()
         },
         @ViewBuilder center: @escaping () -> Center,
-        trailing: @escaping () -> Trailing = {
+        @ViewBuilder trailing: @escaping () -> Trailing = {
             Text("").hidden()
         }
     ) {
@@ -42,5 +42,11 @@ public struct CenterHStack<Leading: View, Center: View, Trailing: View>: View {
 }
 
 #Preview {
-    CenterHStack(leading: {Text("leading")}, center: { Text("Center") })
+    CenterHStack(
+        leading: {
+            Text("leading")
+        }, center: {
+            Text("Center")
+        }
+    )
 }
