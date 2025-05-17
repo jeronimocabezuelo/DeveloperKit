@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
     func customBorderedStyle() -> some View {
 #if os(macOS)
         self.buttonStyle(.bordered)
