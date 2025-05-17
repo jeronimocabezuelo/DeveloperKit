@@ -20,18 +20,8 @@ public struct OptionalDatePicker: View {
     
     public var body: some View {
         HStack {
-            Toggle(isOn: Binding(
-                get: { date != nil },
-                set: { isOn in
-                    if isOn {
-                        date = date ?? Date()
-                    } else {
-                        date = nil
-                    }
-                }
-            )) {
-                Text(label)
-            }
+            Text(label)
+            Spacer()
             
             if let unwrappedDate = date {
                 DatePicker(
@@ -43,9 +33,23 @@ public struct OptionalDatePicker: View {
                     displayedComponents: displayedComponents
                 )
                 .labelsHidden()
+                
+                Button {
+                    date = nil
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(.red)
+                }
+                .buttonStyle(.plain)
+            } else {
+                Button {
+                    date = Date()
+                } label: {
+                    Image(systemName: "calendar.badge.plus")
+                        .foregroundStyle(.blue)
+                }
+                .buttonStyle(.plain)
             }
-            
-            Spacer(minLength: .zero)
         }
     }
 }
