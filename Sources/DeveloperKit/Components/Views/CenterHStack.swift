@@ -30,11 +30,11 @@ public struct CenterHStack<Leading: View, Center: View, Trailing: View>: View {
         HStack {
             HStack {
                 leading()
-                Spacer()
+                Spacer(minLength: .zero)
             }
             center()
             HStack {
-                Spacer()
+                Spacer(minLength: .zero)
                 trailing()
             }
         }
