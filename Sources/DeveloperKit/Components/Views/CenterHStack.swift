@@ -32,7 +32,7 @@ public struct CenterHStack<Leading: View, Center: View, Trailing: View>: View {
                 leading()
                 Spacer()
             }
-            center().layoutPriority(2)
+            center()
             HStack {
                 Spacer()
                 trailing()
