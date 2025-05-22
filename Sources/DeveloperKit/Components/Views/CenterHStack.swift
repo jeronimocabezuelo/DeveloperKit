@@ -30,12 +30,15 @@ public struct CenterHStack<Leading: View, Center: View, Trailing: View>: View {
         HStack {
             HStack {
                 leading()
+                    .fixedSize()
                 Spacer(minLength: .zero)
             }
             center()
+                .layoutPriority(1)
             HStack {
                 Spacer(minLength: .zero)
                 trailing()
+                    .fixedSize()
             }
         }
     }
