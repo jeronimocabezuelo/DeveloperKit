@@ -9,17 +9,17 @@ import SwiftUI
 
 public struct Stack<Content: View>: View {
     let axis: Axis
-    let spacing: CGFloat?
     let alignment: Alignment?
+    let spacing: CGFloat?
     let content: () -> Content
     
     public init(axis: Axis,
-                spacing: CGFloat? = nil,
                 alignment: Alignment? = nil,
+                spacing: CGFloat? = nil,
                 @ViewBuilder content: @escaping () -> Content) {
         self.axis = axis
-        self.spacing = spacing
         self.alignment = alignment
+        self.spacing = spacing
         self.content = content
     }
     
