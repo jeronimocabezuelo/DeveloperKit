@@ -68,7 +68,7 @@ public struct SelectorView<Option: Identifiable & Equatable, Label: View, Option
     }
     
     public var body: some View {
-        Stack(axis: axis, spacing: 6, alignment: .leading, content: { content })
+        Stack(axis: axis, alignment: .leading, spacing: 6, content: { content })
     }
     
     func opacityFor(index: Int) -> Double {
