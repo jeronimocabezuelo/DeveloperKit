@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct ID<T>: Hashable { // swiftlint:disable:this type_name
-    let value: UUID
+public struct ID<T>: Hashable { // swiftlint:disable:this type_name
+    public let value: UUID
     
-    init() {
+    public init() {
         self.value = UUID()
     }
     
-    init(_ value: UUID) {
+    public init(_ value: UUID) {
         self.value = value
     }
     
-    init?(_ value: UUID?) {
+    public init?(_ value: UUID?) {
         guard let value else { return nil }
         self.value = value
     }
