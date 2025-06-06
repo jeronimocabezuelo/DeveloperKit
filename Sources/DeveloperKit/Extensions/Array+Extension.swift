@@ -70,3 +70,9 @@ extension Array where Element: Collection {
         return self.flatMap { $0 }
     }
 }
+
+public extension Array {
+    mutating func removeAll(id: Element.ID) where Element: Identifiable {
+        self.removeAll(where: { $0.id == id})
+    }
+}
