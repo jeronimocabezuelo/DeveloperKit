@@ -77,8 +77,9 @@ public extension Array {
     }
     
     mutating func removeAll(ids: [Element.ID]) where Element: Identifiable {
+        let ids = Set(ids)
         self.removeAll(where: {
-            ids.contains($0)
+            ids.contains($0.id)
         })
     }
 }
