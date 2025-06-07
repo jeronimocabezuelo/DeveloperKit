@@ -73,6 +73,12 @@ extension Array where Element: Collection {
 
 public extension Array {
     mutating func removeAll(id: Element.ID) where Element: Identifiable {
-        self.removeAll(where: { $0.id == id})
+        self.removeAll(where: { $0.id == id })
+    }
+    
+    mutating func removeAll(ids: [Element.ID]) where Element: Identifiable {
+        self.removeAll(where: {
+            ids.contains($0)
+        })
     }
 }
