@@ -8,11 +8,11 @@
 import SwiftUI
 
 public struct OptionalDatePicker: View {
-    let label: String
+    let label: LocalizedStringKey
     @Binding var date: Date?
     let displayedComponents: DatePickerComponents
     
-    public init(label: String, date: Binding<Date?>, displayedComponents: DatePickerComponents = [.hourAndMinute, .date]) {
+    public init(label: LocalizedStringKey, date: Binding<Date?>, displayedComponents: DatePickerComponents = [.hourAndMinute, .date]) {
         self.label = label
         self._date = date
         self.displayedComponents = displayedComponents
