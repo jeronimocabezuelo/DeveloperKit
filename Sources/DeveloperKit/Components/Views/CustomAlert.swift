@@ -12,6 +12,12 @@ public struct AlertButton {
     var role: ButtonRole?
     var action: (() -> Void)?
     
+    public init(title: String, role: ButtonRole? = nil, action: (() -> Void)? = nil) {
+        self.title = title
+        self.role = role
+        self.action = action
+    }
+    
     public static func accept(action: (() -> Void)? = nil) -> Self {
         .init(title: "Aceptar", action: action)
     }
