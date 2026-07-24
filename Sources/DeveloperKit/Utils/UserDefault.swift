@@ -7,14 +7,18 @@
 
 import Foundation
 
-@propertyWrapper struct UserDefault<T, Key: RawRepresentable<String>> {
+@propertyWrapper public struct UserDefault<T, Key: RawRepresentable<String>> {
+    public init(key: Key) {
+        self.key = key
+    }
+    
     let key: Key
     let defaultValue: T? = nil
     let storage = UserDefaults.standard
     
-    var wrappedValue: T? {
-        get { storage.value(forKey: key.rawValue) as? T }
-        set { storage.setValue(newValue, forKey: key.rawValue) }
+    public var wrappedValue: T? {
+        get { storage.object(forKey: key.rawValue) as? T }
+        set { storage.set(newValue, forKey: key.rawValue) }
     }
 }
 
@@ -28,8 +32,8 @@ import Foundation
     let storage = UserDefaults.standard
     
     var wrappedData: Data? {
-        get { storage.value(forKey: key.rawValue) as? Data }
-        set { storage.setValue(newValue, forKey: key.rawValue) }
+        get { storage.object(forKey: key.rawValue) as? Data }
+        set { storage.set(newValue, forKey: key.rawValue) }
     }
     
     public var wrappedValue: T? {
